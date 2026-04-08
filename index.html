@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amplitude Test - Landing Page</title>
+  <title>Amplitude Test Landing Page</title>
 </head>
 <body>
   <main>
@@ -12,8 +12,33 @@
       Track customer engagement, understand behavior, and improve conversion with simple analytics.
     </p>
 
-    <button id="signup-btn">Sign Up Now</button>
-    <button id="demo-btn">Request A Demo</button>
+    <button id="signup-btn">Sign Up</button>
+    <button id="demo-btn">Request Demo</button>
   </main>
+
+  <script src="https://cdn.amplitude.com/script/analytics-browser-2.11.10-min.js"></script>
+  <script>
+    window.amplitude.init('757c7c8953ebadc3d4e82cc0369e3c23', {
+      defaultTracking: false
+    });
+
+    window.amplitude.track('landing_page_viewed', {
+      page_name: 'Amplitude Test Landing Page'
+    });
+
+    document.getElementById('signup-btn').addEventListener('click', function () {
+      window.amplitude.track('sign_up_clicked', {
+        button_name: 'Sign Up',
+        page_name: 'Amplitude Test Landing Page'
+      });
+    });
+
+    document.getElementById('demo-btn').addEventListener('click', function () {
+      window.amplitude.track('request_demo_clicked', {
+        button_name: 'Request Demo',
+        page_name: 'Amplitude Test Landing Page'
+      });
+    });
+  </script>
 </body>
 </html>
